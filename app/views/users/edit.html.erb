@@ -1,0 +1,31 @@
+<h2>Edit your account info</h2>
+
+<%= link_to 'Back to wine.r', wines
+
+<%= form_for @users do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %><br>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :birthday %>
+  <%= f.text_field :birthday %><br>
+
+  <%= f.label :preferences %>
+  <%= f.text_field :preferences %><br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+
+  <%= f.submit 'Update Your Account Info' %>
+
+<% end %>
+
+  <%= link_to 'Delete Your Account', user_path(user), method: :delete %>

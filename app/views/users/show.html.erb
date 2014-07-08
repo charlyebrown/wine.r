@@ -1,0 +1,13 @@
+<h2> Welcome <%= session[:current_user].name %> </h2>
+
+<% if current_user && current_user.id == user.id %>
+  <%= link_to 'Search for a Wine', wine_search_path %>
+  <%= link_to 'Edit', edit_user_path(user) %> |
+  <%= link_to 'Delete Your Account', user_path(user), method: :delete %>
+  <% if user.wines %>
+    <% user.wines each do |wine| %>
+      <%= link_to wine.name, wine_path(wine) %>
+      <%= wine.label_url %>
+    <% end %>
+  <% end %>
+<% end %>
