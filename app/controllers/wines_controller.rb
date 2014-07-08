@@ -21,9 +21,23 @@ class WinesController < ApplicationController
     end
   end
 
+  def edit
+    @wine = Wine.find(params[:id])
+  end
+
+  def update
+    @wine = Wine.find(params[:id])
+    
+  end
+
+  def destroy
+  end
+
   private
+
   def wine_params
-    params.require(:wine).permit(:name, :year, :)
+    params.require(:wine).permit(:name, :grape_blend, :year, :region,
+    :vineyard, :description, :flavor_profile, :color, :rating)
   end
 
 
