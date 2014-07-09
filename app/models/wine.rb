@@ -1,5 +1,5 @@
 class Wine < ActiveRecord::Base
   belongs_to :users
-  validates :name, :year, :grape_blend, :region, :color, presence: true
-  validates :year, numericality: { only_integer: true}
+  validates :name, :vintage, :varietal, :region, :color, presence: true
+  validates :vintage, numericality: { only_integer: true}
 end

@@ -1,0 +1,8 @@
+<h2> Welcome to wine.r wines </h2>
+
+<%= form_tag('/search', method: 'get') do %>
+  <%= search_field_tag 'search' %>
+  <%= search_field_tag 'Search' %>
+<% end %>
+
+<%= link_to "Add a Wine", new_wine_path %>

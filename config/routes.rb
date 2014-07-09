@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   resources :users
 
   #Sessions
-  get '/login' => 'sessions#new'
+  get '/login'     => 'sessions#new'
   post '/sessions' => 'sessions#create'
-  get 'logout' => 'sessions#destroy'
+  get 'logout'     => 'sessions#destroy'
+
+  #Wines
+  resources :wines
 
 end
