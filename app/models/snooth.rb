@@ -1,12 +1,11 @@
 class Snooth
-  attr_reader(:api_key)
-  def initialize
-    @api_key = 809h1gva4mkzi7v6q5np4o597krvxpklyp0poq3953cuuiip
-  end
+  API_KEY = "809h1gva4mkzi7v6q5np4o597krvxpklyp0poq3953cuuiip"
 
-  def self.search(wine_name)
+  def self.search_wines(wine_name)
+    return [] if wine_name.blank?
+
     search_params = wine_name.split.join('+')
-    api_root = "http://api.snooth.com/wines/?akey=#{@api_key}&q="
+    api_root = "http://api.snooth.com/wines/?akey=#{API_KEY}&q="
     JSON.parse(HTTParty.get(api_root + search_params))['wines']
   end
 

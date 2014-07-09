@@ -10,7 +10,16 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   get 'logout'     => 'sessions#destroy'
 
+  #Search
+  # get '/wines/search'   => 'wines#search', as: 'search_wines'
+
   #Wines
-  resources :wines
+  resources :wines do
+    get 'search', on: :collection
+  end
+
+  #Reviews
+  resources :reviews
+
 
 end

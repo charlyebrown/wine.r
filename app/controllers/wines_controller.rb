@@ -44,13 +44,9 @@ class WinesController < ApplicationController
   end
 
   def search
-    @results = snooth.search(params[:search])
-  end
-
-  def add_wine
-    new_wine = snooth.search_by_id(params[:code])
-    @wine = Wine.find_or_create_by(new_wine.first)
-    redirect_to wine_path(@wine)
+    @results = Snooth.search_wines(params[:search])
+    Wine.add_wines(@results)
+    redirect_to wines_path
   end
 
   private
@@ -59,6 +55,5 @@ class WinesController < ApplicationController
     params.require(:wine).permit(:name, :varietal, :vintage, :region,
     :vineyard, :description, :flavor_profile, :color, :rating, :image)
   end
-
 
 end

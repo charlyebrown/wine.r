@@ -1,0 +1,10 @@
+<h2>Your results </h2>
+
+<% @results.each do |result| %>
+<div class='results'>
+  <h4><%= result["name"] %></h4>
+  <h4><%= result["winery"] %></h4>
+  <h4><%= result["varietal"] %></h4>
+  <h4><%= result["vintage"] %></h4>
+</div>
+<% end %>

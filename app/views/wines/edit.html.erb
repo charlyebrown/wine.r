@@ -1,0 +1,41 @@
+<h2>Edit a wine in the wine.r database</h2>
+
+<ul>
+  <% @wine.errors.full_message.each do |error_msg| %>
+    <li><%= error_msg %></li>
+  <% end %>
+</ul>
+
+<%= form_for @wine do |f| %>
+  <div class="form">
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :vineyard %>
+    <%= f.text_field :vineyard %>
+
+    <%= f.label :vintage %>
+    <%= f.text_field :vintage %>
+
+    <%= f.label :varietal %>
+    <%= f.text_field :varietal %>
+
+    <%= f.label :region %>
+    <%= f.text_field :region %>
+
+    <%= f.label :color %>
+    <%= f.text_field :color %>
+
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.submit 'Edit this wine' %>
+
+  </div>
+<%= end %>
+
+<%= button_to "Delete", wine_path(@movie), method: :delete %>
