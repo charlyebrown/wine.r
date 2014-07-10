@@ -7,6 +7,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def remove_wine
+    @user = User.find(session[:current_user])
+    @user.wines.find(params[:id]).destroy
+    redirect_to user_path(@user)
+  end
+
   def new
     @user = User.new
   end

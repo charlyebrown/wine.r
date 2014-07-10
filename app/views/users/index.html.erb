@@ -1,8 +1,10 @@
 
 <% if session[:current_user] %>
   <h2>Welcome <%= User.find(session[:current_user]).name %></h2>
-  <%= link_to 'Search for wines', search_wines_path%>
-  <%= link_to 'Log out', logout_path %>
+  <%= form_tag('/wines/search', method: 'get') do %>
+    <%= search_field_tag 'search' %>
+    <%= submit_tag 'Search for wines' %>
+  <% end %>
 <% else %>
   <h2>Welcome</h2>
   <%= link_to 'Sign Up for a new account', new_user_path %>

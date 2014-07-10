@@ -1,13 +1,22 @@
-<h2> Welcome <%= session[:current_user].name %> </h2>
 
+<% user = User.find(session[:current_user]) %>
+<h2> Welcome <%= user.name %> </h2>
 <% if current_user && current_user.id == user.id %>
-  <%= link_to 'Search for a Wine', wine_search_path %>
-  <%= link_to 'Edit', edit_user_path(user) %> |
+  <% if user.wines.count >= 1 %>
+  <div>
+    <h2>Your Favorites!</h2>
+    <% user.wines.each do |favorite_wine| %>
+      <hr><%= link_to favorite_wine.name, wine_path(favorite_wine) %>
+      <img src="<%= favorite_wine.image %>">
+      <%= form_tag('/users/remove_wine', method: :post) do |f| %>
+        <%= hidden_field_tag :id, favorite_wine.id %>
+        <%= submit_tag 'Delete from your favorites' %>
+      <% end %>
+  </div>
+  <% end %>
+  <hr>
+  <%= link_to 'Search for a Wine', search_wines_path %><br>
+  <%= link_to 'Edit Your Account', edit_user_path(user) %> |
   <%= link_to 'Delete Your Account', user_path(user), method: :delete %>
-  <% if user.wines %>
-    <% user.wines each do |wine| %>
-      <%= link_to wine.name, wine_path(wine) %>
-      <%= wine.label_url %>
-    <% end %>
   <% end %>
 <% end %>

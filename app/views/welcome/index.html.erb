@@ -11,3 +11,9 @@
   <%= link_to 'Login', login_path %>
   <%= link_to 'Sign up for an account', new_user_path %>
 <% end %>
+
+<h2>Check out this awesome wine!</h2>
+  <% id = Wine.pluck(:id).shuffle[0] %>
+  <% random_wine = Wine.find(id) %>
+  <%= link_to random_wine.name, wine_path(random_wine) %>
+  <img src="<%= random_wine.image %>">

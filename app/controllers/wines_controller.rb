@@ -6,6 +6,18 @@ class WinesController < ApplicationController
     @wines = Wine.all
   end
 
+  def search
+    @results = Snooth.search_wines(params[:search])
+    Wine.add_wines(@results)
+  end
+
+  def add_to_user_favorites
+    user_favorite_wine = Wine.find_by(code: params[:code])
+    user = User.find(session[:current_user])
+    user.wines << user_favorite_wine
+    redirect_to user_path(user)
+  end
+
   def show
     @wine = Wine.find(params[:id])
   end
@@ -43,18 +55,6 @@ class WinesController < ApplicationController
     else
       redirect_to wine_path(@wine)
     end
-  end
-
-  def search
-    @results = Snooth.search_wines(params[:search])
-    Wine.add_wines(@results)
-  end
-
-  def add_to_user_favorites
-    user_favorite_wine = Wine.find_by(code: params[:code])
-    user = User.find(session[:current_user])
-    user.wines << user_favorite_wine
-    redirect_to user_path(user)
   end
 
   private

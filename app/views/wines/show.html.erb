@@ -1,0 +1,14 @@
+
+<div class="wine"
+<h2><%= @wine.name %> | <%= @wine.vintage %></h2><br>
+<img src="<%= @wine.image %>">
+<h5><%= @wine.description %></h5>
+<div>
+
+<% user = User.find(session[:current_user]) %>
+  <% if Wine.joins(:users).where(code: @wine.code) == [] %>
+  <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do |f| %>
+    <%= hidden_field_tag :code, @wine.code %>
+    <%= submit_tag 'Add to Your Favorites' %>
+  <% end %>
+<% end %>

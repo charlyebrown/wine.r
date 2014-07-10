@@ -1,7 +1,7 @@
 class Wine < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :wine_reviews
-  validates :name, :vintage, :region, presence: true
+  validates :name, :vintage, presence: true
   validates :vintage, numericality: { only_integer: true}
   validates :code, uniqueness: true
 
