@@ -17,6 +17,7 @@ class Wine < ActiveRecord::Base
         new_wine.color = wine_info["type"].blank? ? "unknown" : wine_info["type"]
         new_wine.code = wine_info["code"]
         new_wine.image = wine_info["image"]
+        new_wine.price = wine_info["price"].to_f
       end
     end
   end

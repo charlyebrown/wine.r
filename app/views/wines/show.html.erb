@@ -3,6 +3,7 @@
 <h2><%= @wine.name %> | <%= @wine.vintage %></h2><br>
 <img src="<%= @wine.image %>">
 <h5><%= @wine.description %></h5>
+<h5>$<%= number_with_precision(@wine.price, precision: 2) %></h5>
 <div>
 
 <% user = User.find(session[:current_user]) %>

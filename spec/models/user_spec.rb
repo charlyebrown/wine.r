@@ -22,5 +22,11 @@ describe User do
       birthday: "Jan 28, 1979")
     expect(k).to be_invalid
   end
-  
+
+  it "is expected to be able to add a favorite wine" do
+    wine1 = Wine.create(name: 'Delicious Wine', vintage: 1999, vineyard: "Long Island",
+    image: "http://flickholdr.com/200/300/wine")
+    charlye.wines << wine1
+  end
+
 end
