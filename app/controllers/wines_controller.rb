@@ -1,5 +1,7 @@
 class WinesController < ApplicationController
 
+  before_action :authenticate, only: [:new, :create]
+
   def index
     @wines = Wine.all
   end
@@ -46,7 +48,14 @@ class WinesController < ApplicationController
   def search
     @results = Snooth.search_wines(params[:search])
     Wine.add_wines(@results)
-    redirect_to wines_path
+    redirect_to search_wines
+  end
+
+  def add_to_user_favorites
+    user_favorite_wine = Wine.find_by(code: params[:code])
+    user = User.find(session[:current_user])
+    user.wines << user_favorite_wine
+    redirect_to user_path(user)
   end
 
   private
