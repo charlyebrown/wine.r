@@ -48,7 +48,6 @@ class WinesController < ApplicationController
   def search
     @results = Snooth.search_wines(params[:search])
     Wine.add_wines(@results)
-    redirect_to search_wines
   end
 
   def add_to_user_favorites

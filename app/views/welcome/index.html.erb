@@ -1,4 +1,13 @@
-<h2>Welcome to Wine.r!</h2>
 
-<%= link_to 'Login', login_path %>
-<%= link_to 'Sign up for an account', new_user_path %>
+
+<% if session[:current_user] %>
+  <h2>Welcome to Wine.r, <%= User.find(session[:current_user]).name %>!</h2>
+  <%= form_tag('/wines/search', method: 'get') do %>
+    <%= search_field_tag 'search' %>
+    <%= submit_tag 'Search for wines' %>
+  <% end %>
+<% else %>
+  <h2>Welcome to Wine.r!</h2>
+  <%= link_to 'Login', login_path %>
+  <%= link_to 'Sign up for an account', new_user_path %>
+<% end %>

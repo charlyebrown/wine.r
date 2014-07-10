@@ -2,14 +2,15 @@ class CreateWines < ActiveRecord::Migration
   def change
     create_table :wines do |t|
       t.string   :name
-      t.string   :grape_blend
-      t.integer  :year
+      t.string   :varietal
+      t.integer  :vintage
       t.string   :region
       t.string   :vineyard
       t.text     :description
-      t.text     :flavor_profile
-      t.string   :color
+      t.string   :type
       t.integer  :rating
+      t.text     :image
+      t.string   :code
 
       t.timestamps
 

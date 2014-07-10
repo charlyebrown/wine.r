@@ -11,21 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709194010) do
+ActiveRecord::Schema.define(version: 20140710144738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: true do |t|
+    t.string   "username"
     t.string   "name"
     t.string   "address"
     t.date     "birthday"
     t.string   "preferences"
+    t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
-    t.string   "username"
+  end
+
+  create_table "users_wines", force: true do |t|
+    t.integer "users_id"
+    t.integer "wines_id"
   end
 
   create_table "wine_reviews", force: true do |t|
@@ -43,13 +48,12 @@ ActiveRecord::Schema.define(version: 20140709194010) do
     t.string   "region"
     t.string   "vineyard"
     t.text     "description"
-    t.text     "flavor_profile"
     t.string   "color"
     t.integer  "rating"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.text     "image"
     t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

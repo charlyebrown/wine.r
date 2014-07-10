@@ -22,4 +22,5 @@ describe User do
       birthday: "Jan 28, 1979")
     expect(k).to be_invalid
   end
+  
 end

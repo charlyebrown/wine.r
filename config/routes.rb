@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   #Wines
   resources :wines do
     get 'search', on: :collection
+    post 'add_to_user_favorites', on: :collection
   end
 
   #Reviews

@@ -1,7 +1,9 @@
 class Wine < ActiveRecord::Base
-  belongs_to :users
+  has_and_belongs_to_many :users
+  has_many :wine_reviews
   validates :name, :vintage, :region, presence: true
   validates :vintage, numericality: { only_integer: true}
+  validates :code, uniqueness: true
 
   def self.add_wines(wine_list)
     wine_list.each do |wine_info|
