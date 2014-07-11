@@ -13,7 +13,7 @@ class WinesController < ApplicationController
 
   def add_to_user_favorites
     user_favorite_wine = Wine.find_by(code: params[:code])
-    user = User.find(session[:current_user])
+    user = current_user
     user.wines << user_favorite_wine
     redirect_to user_path(user)
   end

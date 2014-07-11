@@ -1,25 +1,30 @@
 
-<% user = User.find(session[:current_user]) %>
-<h2> Welcome <%= user.name %> </h2>
-<% if current_user && current_user.id == user.id %>
-  <% if user.wines.count >= 1 %>
-  <div>
-    <h2>Your Favorites!</h2>
-    <% user.wines.each do |favorite_wine| %>
-      <hr><%= link_to favorite_wine.name, wine_path(favorite_wine) %>
-      <img src="<%= favorite_wine.image %>">
-      <%= form_tag('/users/remove_wine', method: :post) do |f| %>
-        <%= hidden_field_tag :id, favorite_wine.id %>
-        <%= submit_tag 'Delete from your favorites' %>
-      <% end %>
-  </div>
-  <% end %>
-  <hr>
-  <%= form_tag('/wines/search', method: 'get') do %>
-    <%= search_field_tag 'search' %>
-    <%= submit_tag 'Search for wines' %>
-  <% end %>
-  <%= link_to 'Edit Your Account', edit_user_path(user) %> |
-  <%= link_to 'Delete Your Account', user_path(user), method: :delete %>
-  <% end %>
+
+<h2> Welcome <%= @user.name %> </h2>
+<% if @user.wines.count >= 1 %>
+<div>
+  <h2>Your Favorites!</h2>
+  <% @user.wines.each do |favorite_wine| %>
+    <hr><%= link_to favorite_wine.name, wine_path(favorite_wine) %>
+    <img src="<%= favorite_wine.image %>">
+
+    <%= form_tag('/wine_reviews/new', method: :get) do |f| %>
+      <%= hidden_field_tag :wine_id, favorite_wine.id %>
+      <%= submit_tag "Add a review for #{favorite_wine.name}" %>
+    <% end %>
+
+    <%= form_tag('/users/remove_wine', method: :post) do |f| %>
+      <%= hidden_field_tag :id, favorite_wine.id %>
+      <%= submit_tag 'Delete from your favorites' %>
+    <% end %>
+</div>
+<% end %>
+<hr>
+<%= link_to 'Edit Your Account', edit_user_path(@user) %> |
+<%= link_to 'Delete Your Account', user_path(@user), method: :delete %>
+<hr>
+
+
+<%= render '/wines/search' %>
+
 <% end %>

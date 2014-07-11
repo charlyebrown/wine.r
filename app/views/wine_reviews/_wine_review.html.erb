@@ -1,0 +1,12 @@
+<div class="review">
+  <% review_wine = Wine.find(review.wine_id) %>
+  Wine: <%= review_wine.name %> <br>
+  <img src="<%= review_wine.image %>"><br>
+  Title: <%= review.title %><br>
+  Review: <%= review.content %><br>
+  Written by: <%= review.user.name %><br>
+  <% if current_user == review.user %>
+    <%= link_to "Edit this review", edit_wine_review_path(review) %>
+  <% end %>
+  <hr>
+</div>

@@ -6,10 +6,15 @@
 <h5>$<%= number_with_precision(@wine.price, precision: 2) %></h5>
 <div>
 
-<% user = User.find(session[:current_user]) %>
+<% user = current_user %>
   <% if Wine.joins(:users).where(code: @wine.code) == [] %>
   <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do |f| %>
     <%= hidden_field_tag :code, @wine.code %>
     <%= submit_tag 'Add to Your Favorites' %>
   <% end %>
+<% end %>
+
+<%= form_tag('/wine_reviews/new', method: :get) do |f| %>
+  <%= hidden_field_tag :wine_id, @wine.id %>
+  <%= submit_tag "Add a review for #{@wine.name}" %>
 <% end %>

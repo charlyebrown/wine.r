@@ -1,3 +1,8 @@
-<h2>Wine Reviews</h2>
 
-@wines.random.reviews
+<h2>Our Most current reviews</h2>
+<% current_reviews = WineReview.last(3) %>
+<% current_reviews.each do |review| %>
+  <%= render partial: "wine_review", locals: {review: review} %>
+<% end %>
+
+<%= render '/wines/search' %>

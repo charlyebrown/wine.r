@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   #welcome
-  get '/'   => 'welcome#index', as: 'root'
+  root to: 'welcome#index'
 
   get '/wines/search'                         => 'wines#search', as: 'search_wines'
   post '/wines/add_to_user_favorites_wines'  => 'wines#add_to_user_favorites', as: 'add_to_user_favorites_wines'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :wines
 
   #Reviews
-  resources :reviews
+  resources :wine_reviews
 
 
 end
