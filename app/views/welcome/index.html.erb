@@ -13,7 +13,7 @@
 <% end %>
 
 <h2>Check out this awesome wine!</h2>
-  <% id = Wine.pluck(:id).shuffle[0] %>
-  <% random_wine = Wine.find(id) %>
+  <% random_id = Wine.pluck(:id).shuffle[0] %>
+  <% random_wine = Wine.find(random_id) %>
   <%= link_to random_wine.name, wine_path(random_wine) %>
   <img src="<%= random_wine.image %>">
