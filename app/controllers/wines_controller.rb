@@ -27,6 +27,7 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
+    @wine_reviews = WineReview.where(wine_id: params[:id])
   end
 
   def new

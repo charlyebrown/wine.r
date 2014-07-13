@@ -4,6 +4,11 @@
 <img src="<%= @wine.image %>">
 <h5><%= @wine.description %></h5>
 <h5>$<%= number_with_precision(@wine.price, precision: 2) %></h5>
+<% if @wine_reviews %>
+  <% @wine_reviews.each do |review| %>
+  <%= render partial: "/wine_reviews/wine_review", locals: {review: review} %>
+  <% end %>
+<% end %>
 <div>
 
 <% user = current_user %>

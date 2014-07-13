@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ // = require_layout
+
+  @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+  body {
+    background-image: asset-url("/images/gray.png");
+    font-family: 'Open Sans', 400;
+  }

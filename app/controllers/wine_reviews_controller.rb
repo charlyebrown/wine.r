@@ -29,12 +29,14 @@ class WineReviewsController < ApplicationController
 
   def edit
     @wine_review = WineReview.find(params[:id])
+    @wine = Wine.find(@wine_review.wine_id)
   end
 
   def update
     @wine_review = WineReview.find(params[:id])
+    @wine = Wine.find(@wine_review.wine_id)
     if @wine_review.update(wine_review_params)
-      redirect_to wine_review_path(@wine)
+      redirect_to wine_path(@wine)
     else
       render :edit
     end
