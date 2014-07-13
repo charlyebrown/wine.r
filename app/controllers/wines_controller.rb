@@ -7,7 +7,14 @@ class WinesController < ApplicationController
   end
 
   def search
-    @results = Snooth.search_wines(params[:search])
+    @results = Snooth.search(params[:search], params[:price])
+    Wine.add_wines(@results)
+  end
+
+  def search_by_food
+    @preferences = current_user.preferences
+    @food = params[:food]
+    @results = SnoothFood.search_by_food(@food, params[:price], @preferences)
     Wine.add_wines(@results)
   end
 

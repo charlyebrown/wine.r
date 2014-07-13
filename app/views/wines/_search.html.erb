@@ -1,4 +1,25 @@
+<h3>Search for Wines by Varietal, Region or by Food Pairings</h3>
+
 <%= form_tag('/wines/search', method: 'get') do %>
-  <%= search_field_tag 'search' %>
-  <%= submit_tag 'Search' %>
+  <%= label_tag "Enter a Varietal or a Region" %>
+  <%= search_field_tag :search %>
+  <%= select_tag :price, options_for_select({ "Select a Price Range" => "",
+    "Less than $10" => 1, "$10-$20.00" => 2, "$20.00-$35.00" => 3, "$35.00-50.00" => 4,
+    "$50.00-$80.00" => 5, "Greater than $80.00" => 6 }) %>
+  <%= submit_tag 'Search for wines by varietal or region' %>
 <% end %>
+
+<br>
+
+<%= form_tag('/wines/search_by_food', method: 'get') do %>
+  <%= select_tag :food, options_for_select({ "Select a Food Type" => "",
+    "Spicy" => 1, "Savory" => 2, "Steak-Burgers" => 3, "BBQ" => 4, "Cheese" => 5,
+    "Pasta (Red Sauce)" => 6, "Pasta (White Sauce)" => 7, "Seafood" => 8,
+    "Chicken/Pork" => 9, "Desserts/Sweets" => 10 }) %>
+  <%= select_tag :price, options_for_select({ "Select a Price Range" => "",
+    "Less than $10" => 1, "$10-$20.00" => 2,"$20.00-$35.00" => 3, "$35.00-50.00" => 4,
+    "$50.00-$80.00" => 5, "Greater than $80.00" => 6 }) %>
+  <%= submit_tag 'Search by Food' %>
+<% end %>
+
+<hr>
