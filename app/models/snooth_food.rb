@@ -72,8 +72,7 @@ class SnoothFood
       else
         fscore = 0
     end
-
-    score = ((pscore + fscore).fdiv(2))
+    score = (pscore * 0.25 + fscore * 0.75)
 
     #converts score into search term
     case score
