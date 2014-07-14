@@ -2,8 +2,8 @@
 
 <h2> Welcome <%= @user.name %> </h2>
 <% if @user.wines.count >= 1 %>
-<div>
-  <h2>Your Favorites!</h2>
+<div class="wine_show 16 columns">
+  <hr><h2>Your Favorites!</h2>
   <% @user.wines.each do |favorite_wine| %>
     <hr><%= link_to favorite_wine.name, wine_path(favorite_wine) %>
     <img src="<%= favorite_wine.image %>">
@@ -11,7 +11,8 @@
     <%= form_tag('/wine_reviews/new', method: :get) do |f| %>
       <%= hidden_field_tag :wine_id, favorite_wine.id %>
       <%= submit_tag "Add a review for #{favorite_wine.name}" %>
-    <% end %>
+  <% end %>
+</div>
 
     <%= form_tag('/users/remove_wine', method: :post) do |f| %>
       <%= hidden_field_tag :id, favorite_wine.id %>
