@@ -12,11 +12,14 @@ class Wine < ActiveRecord::Base
         new_wine.varietal = wine_info["varietal"].blank? ? "unknown" : wine_info["varietal"]
         new_wine.region = wine_info["region"]
         new_wine.vineyard = wine_info["vineyard"]
-        new_wine.description = wine_info["description"]
         new_wine.color = wine_info["type"].blank? ? "unknown" : wine_info["type"]
         new_wine.code = wine_info["code"]
         new_wine.image = wine_info["image"]
         new_wine.price = wine_info["price"].to_f
+
+        #making a second API call to get the wine-maker's description
+        api_root = "http://api.snooth.com/wine/?akey=#{ENV["SNOOTH_API_KEY"]}&id="
+        new_wine.description = JSON.parse(HTTParty.get(api_root + new_wine.code))["wines"][0]["wm_notes"]
       end
     end
   end

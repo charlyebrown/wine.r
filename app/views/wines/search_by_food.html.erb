@@ -8,6 +8,7 @@
     <h4><%= result["varietal"] %></h4>
     <h4><%= result["vintage"] %></h4>
     <h4><%= result["price"] %></h4>
+    <% id = result["code"]%>
     <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do |f| %>
       <%= hidden_field_tag :code, result["code"] %>
       <%= submit_tag 'Add to Your Favorites' %>

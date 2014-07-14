@@ -2,7 +2,9 @@
 <div class="wine"
 <h2><%= @wine.name %> | <%= @wine.vintage %></h2><br>
 <img src="<%= @wine.image %>">
-<h5><%= @wine.description %></h5>
+<% if @wine.description %>
+  <h5><%= @wine.description %></h5>
+<% end %>
 <h5>$<%= number_with_precision(@wine.price, precision: 2) %></h5>
 <% if @wine_reviews %>
   <% average_rating = [] %>
