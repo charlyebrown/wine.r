@@ -14,10 +14,10 @@ class WineReviewsController < ApplicationController
   def create
     @wine_review = WineReview.new(wine_review_params)
     @wine_review.user = current_user
-    if @wine_review.save!
+    if @wine_review.save
       redirect_to wine_review_path(@wine_review)
     else
-      @wine = Wine.find(params[:wine_id])
+      @wine = Wine.find(@wine_review.wine_id)
       @user = User.find(session[:current_user])
       render :new
     end
@@ -46,7 +46,7 @@ class WineReviewsController < ApplicationController
   def destroy
     @wine_review = WineReview.find(params[:id])
     @user = User.find(session[:current_user])
-    @wine = Wine.find(params[:wine_id])
+    @wine = Wine.find(@wine_review.wine_id)
     if @wine_review.destroy
       redirect_to wine_path(@wine)
     else

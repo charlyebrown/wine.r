@@ -1,3 +1,5 @@
 <h2>Edit your review for <%= @wine.name %></h2>
 
 <%= render 'form' %>
+
+<%= link_to 'Delete this review', wine_review_path(@wine_review), method: :delete %>
