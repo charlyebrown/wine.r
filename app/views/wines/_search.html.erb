@@ -1,5 +1,7 @@
+<div class="search-label">
 <h3>Search for Wines by Varietal, Region or by Food Pairings</h3>
-
+</div>
+<div class="search">
 <%= form_tag('/wines/search', method: 'get') do %>
   <%= label_tag "Enter a Varietal or a Region" %>
   <%= search_field_tag :search %>
@@ -8,9 +10,10 @@
     "$50.00-$80.00" => 5, "Greater than $80.00" => 6 }) %>
   <%= submit_tag 'Search for wines by varietal or region' %>
 <% end %>
+</div>
 
 <br>
-
+<div class="search">
 <%= form_tag('/wines/search_by_food', method: 'get') do %>
   <%= select_tag :food, options_for_select({ "Select a Food Type" => "",
     "Spicy" => 1, "Savory" => 2, "Steak-Burgers" => 3, "BBQ" => 4, "Cheese" => 5,
@@ -21,5 +24,6 @@
     "$50.00-$80.00" => 5, "Greater than $80.00" => 6 }) %>
   <%= submit_tag 'Search by Food' %>
 <% end %>
+</div>
 
 <hr>

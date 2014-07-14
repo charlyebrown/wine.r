@@ -1,4 +1,4 @@
-
+<div class="show">
 
 <h2> Welcome <%= @user.name %> </h2>
   <% if @user.wines.count >= 1 %>
@@ -26,3 +26,5 @@
 <%= link_to 'Edit Your Account', edit_user_path(@user) %> |
 <%= link_to 'Delete Your Account', user_path(@user), method: :delete %>
 <hr>
+
+</div>

@@ -14,9 +14,9 @@
   <% ENV["SNOOTH_API_KEY"] %>
     <% if session[:current_user] %>
       <div class="constant_header" align="right">
-        <%= link_to 'Back to your page', user_path(session[:current_user]) %>
+        <%= link_to 'win.r', root_path %> |
+        <%= link_to 'Your Page', user_path(session[:current_user]) %> |
         <%= link_to 'Log Out', logout_path %>
-        <%= link_to 'win.r', root_path %>
       </div>
     <% end %>
 

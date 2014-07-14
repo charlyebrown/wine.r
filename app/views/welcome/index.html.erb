@@ -1,17 +1,16 @@
 
 
 <% if session[:current_user] %>
-  <div class="welcome-header sixteen columns"></div>
-  <h2>Welcome to win.r, <%= User.find(session[:current_user]).name %>!</h2>
+  <div class="welcome-header sixteen columns">
+  <h2>Welcome to win.r, <%= User.find(session[:current_user]).name %>!</h2></div>
   <%= render '/wines/search' %>
 <% else %>
   <div class="welcome-header sixteen columns">
-  <h2>Welcome to win.r!</h2>
+  <h2>Welcome to win.r!</h2></div>
     <div class="welcome">
     <%= link_to 'Login', login_path %></div>
     <div class="welcome">
     <%= link_to 'Sign up for an account', new_user_path %></div>
-  </div>
 <% end %>
 
 <div class="wine_rec">

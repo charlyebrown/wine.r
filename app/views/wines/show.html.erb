@@ -1,4 +1,4 @@
-
+<div class="show">
 <div class="wine"
 <h2><%= @wine.name %> | <%= @wine.vintage %></h2><br>
 <img src="<%= @wine.image %>">
@@ -10,7 +10,13 @@
   <%= render partial: "/wine_reviews/wine_review", locals: {review: review} %>
   <% average_rating << review.rating %>
   <% end %>
-  <h4>Rating: <%= average_rating.inject{ |sum, el| sum + el }.to_f / average_rating.size %></h4>
+  <% if average_rating.length == 0 %>
+    <%= "No Ratings exist for #{@wine.name}." %>
+  <% else %>
+    <% rating = average_rating.inject{ |sum, el| sum + el }.to_f / average_rating.size %>
+    <em>Rating: </em><%= rating %>
+  <% end %>
+
 <% end %>
 
 <div>
@@ -32,3 +38,4 @@
     <%= submit_tag "Add a review for #{@wine.name}" %>
   <% end %>
 <% end %>
+</div>
