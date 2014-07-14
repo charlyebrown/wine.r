@@ -1,12 +1,17 @@
 
 
 <% if session[:current_user] %>
+  <div class="welcome sixteen columns"></div>
   <h2>Welcome to Wine.r, <%= User.find(session[:current_user]).name %>!</h2>
   <%= render '/wines/search' %>
 <% else %>
+  <div class="welcome">
   <h2>Welcome to Wine.r!</h2>
-  <%= link_to 'Login', login_path %>
-  <%= link_to 'Sign up for an account', new_user_path %>
+    <div class="login eight columns alpha">
+    <%= link_to 'Login', login_path %></div>
+    <div class="sign-up eight columns omega">
+    <%= link_to 'Sign up for an account', new_user_path %></div>
+  </div>
 <% end %>
 
 <h2>Check out this awesome wine!</h2>
