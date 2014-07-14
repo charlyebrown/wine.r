@@ -1,23 +1,18 @@
-<div class="image-wrap">
-<img src="http://www.tanninwinebar.com/images/WineCork.jpg">
-</div>
 
-<div class='login'>
 <h2>Login</h2>
+  <div class='login_fields'>
+  <%= form_tag sessions_path do %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+    <br>
 
-<div class='login_fields'
-<%= form_tag sessions_path do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <br>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <br>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <br>
+    <%= submit_tag 'Log In' %>
+    <% end %>
+    <br>
+  </div>
 
-  <%= submit_tag 'Log In' %>
-<% end %>
-<br>
-
-<%= link_to 'Sign Up for an Account', new_user_path %>
-</div>
+    <%= link_to 'Sign Up for an Account', new_user_path %>
