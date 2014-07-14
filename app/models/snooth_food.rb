@@ -20,31 +20,6 @@ class SnoothFood
     end
   end
 
-  #equates user's preferences with a score
-  def self.convert_user_preferences(preferences)
-    pscore = 0
-    case preferences
-      when /sparkling/
-        pscore = 5
-      when /white/
-        pscore = 10
-      when /rose/
-        pscore = 50
-      when /red/
-        pscore = 60
-      when /bold/
-        pscore = 90
-      when /oak/
-        pscore = 20
-      when /dry/
-        pscore = 10
-      when /sweet/
-        pscore = 100
-      else
-        pscore = 0
-    end
-  end
-
   def self.search_by_food(food, search_price, user_preferences)
     price = SnoothFood.convert_price(search_price)
     pscore = SnoothFood.convert_user_preferences(user_preferences)
@@ -73,10 +48,9 @@ class SnoothFood
       else
         fscore = 0
     end
-    score = (pscore * 0.25 + fscore * 0.75)
 
     #converts score into search term
-    case score
+    case fscore
     when 1..10
       q = "Riesling"
     when 11..20

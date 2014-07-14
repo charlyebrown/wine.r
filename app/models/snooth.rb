@@ -20,6 +20,31 @@ class Snooth
     end
   end
 
+  #equates user's preferences with a score
+  def self.convert_user_preferences(preferences)
+    pscore = 0
+    case preferences
+      when /sparkling/
+        pscore = 5
+      when /white/
+        pscore = 10
+      when /rose/
+        pscore = 50
+      when /red/
+        pscore = 60
+      when /bold/
+        pscore = 90
+      when /oak/
+        pscore = 20
+      when /dry/
+        pscore = 10
+      when /sweet/
+        pscore = 100
+      else
+        pscore = 0
+    end
+  end
+
   def self.search(wine_name, search_price)
     return [] if wine_name.blank?
     price = Snooth.convert_price(search_price)

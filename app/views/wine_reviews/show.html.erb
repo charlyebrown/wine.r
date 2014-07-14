@@ -1,1 +1,5 @@
+<% wine = Wine.find(@wine_review.wine_id) %>
+<img src="<%= wine.image %>"><br>
+
 <%= render partial: "wine_review", locals: {review: @wine_review} %>
+<%= link_to "Back to #{wine.name}", wine_path(wine) %>

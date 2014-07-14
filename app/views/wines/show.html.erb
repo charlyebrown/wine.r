@@ -5,12 +5,15 @@
 <h5><%= @wine.description %></h5>
 <h5>$<%= number_with_precision(@wine.price, precision: 2) %></h5>
 <% if @wine_reviews %>
+  <% average_rating = [] %>
   <% @wine_reviews.each do |review| %>
   <%= render partial: "/wine_reviews/wine_review", locals: {review: review} %>
+  <% average_rating << review.rating %>
   <% end %>
+  <h4>Rating: <%= average_rating.inject{ |sum, el| sum + el }.to_f / average_rating.size %></h4>
 <% end %>
-<div>
 
+<div>
 <% user = current_user %>
   <% if Wine.joins(:users).where(code: @wine.code) == [] %>
   <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do |f| %>
@@ -19,7 +22,13 @@
   <% end %>
 <% end %>
 
-<%= form_tag('/wine_reviews/new', method: :get) do |f| %>
-  <%= hidden_field_tag :wine_id, @wine.id %>
-  <%= submit_tag "Add a review for #{@wine.name}" %>
+<!-- allow users to create a review if they haven't already written one, if not, bring them to their review  -->
+<% current_review = WineReview.where(wine_id: @wine.id).where(user_id: current_user.id) %>
+<% if current_review %>
+  <% link_to "Edit your review for #{@wine.name}", edit_wine_review_path(current_review) %>
+<%else %>
+  <%= form_tag('/wine_reviews/new', method: :get) do |f| %>
+    <%= hidden_field_tag :wine_id, @wine.id %>
+    <%= submit_tag "Add a review for #{@wine.name}" %>
+  <% end %>
 <% end %>

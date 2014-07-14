@@ -13,9 +13,10 @@ class WineReviewsController < ApplicationController
 
   def create
     @wine_review = WineReview.new(wine_review_params)
+    @wine = Wine.find(@wine_review.wine_id)
     @wine_review.user = current_user
     if @wine_review.save
-      redirect_to wine_review_path(@wine_review)
+      redirect_to wine_path(@wine_review.wine_id)
     else
       @wine = Wine.find(@wine_review.wine_id)
       @user = User.find(session[:current_user])
