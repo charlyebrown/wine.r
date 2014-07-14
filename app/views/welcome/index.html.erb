@@ -1,11 +1,11 @@
 
 
 <% if session[:current_user] %>
-  <div class="welcome-header sixteen columns">
+  <div class="welcome-header">
   <h2>Welcome to win.r, <%= User.find(session[:current_user]).name %>!</h2></div>
   <%= render '/wines/search' %>
 <% else %>
-  <div class="welcome-header sixteen columns">
+  <div class="welcome-header">
   <h2>Welcome to win.r!</h2></div>
     <div class="welcome">
     <%= link_to 'Login', login_path %></div>
@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="wine_rec">
-<h2>Charlye's Choice:</h2>
+<h3>Charlye's Choice:</h3>
   <% random_id = Wine.pluck(:id).shuffle[0] %>
   <% random_wine = Wine.find(random_id) %>
   <%= link_to random_wine.name, wine_path(random_wine) %>

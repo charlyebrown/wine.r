@@ -1,10 +1,32 @@
 body {
   border-top: 10px solid black;
+
+}
+
+body a:link {
+   color: black;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+body a:visited {
+  color: black;
+  text-decoration: bold;
+}
+
+body a:hover {
+  color: #39f;
 }
 
 .constant_header {
+  color: black;
   margin-top: 15px;
   margin-right: 15px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .image-wrap{
@@ -13,7 +35,7 @@ body {
 
 .image-wrap img{
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: -5px;
 }
 
 h2 {
@@ -23,20 +45,24 @@ h2 {
   margin-bottom: 50px;
 }
 
+h3 {
+  font-weight: bold;
+}
+
 .login {
   margin-left: 15px;
   margin-bottom: 15px;
 }
 
 .search {
-  margin-bottom: 3px;
-  margin-left: 15px;
+  text-align: center;
+  margin-bottom: -1px;
 }
 
 .search-label {
-  margin-bottom: 15px;
-  margin-left: 15px;
+  text-align: center;
   font-weight: bold;
+  margin-bottom: 35px;
 }
 
 .show {
@@ -48,6 +74,7 @@ h2 {
 }
 
 .welcome-header {
+  text-align: left;
   margin-left: 15px;
 }
 
@@ -56,7 +83,7 @@ h2 {
 }
 
 .wine_rec {
+  text-align: center;
   margin-top: 15px;
-  margin-left: 15px;
   margin-bottom: 10px;
 }
