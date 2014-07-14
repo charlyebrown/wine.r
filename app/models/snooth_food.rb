@@ -73,7 +73,7 @@ class SnoothFood
     when 101..110
       q = "Zinfandel"
     else
-      q = "Port"
+      q = "Champagne"
     end
 
     q = q.split.join('+')
