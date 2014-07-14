@@ -22,7 +22,6 @@ class SnoothFood
 
   def self.search_by_food(food, search_price, user_preferences)
     price = SnoothFood.convert_price(search_price)
-    pscore = SnoothFood.convert_user_preferences(user_preferences)
     #equates food item with a score
     case food
       when 1
