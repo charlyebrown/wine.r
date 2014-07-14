@@ -1,24 +1,24 @@
 <%= form_for @user do |f| %>
 
-  <%= f.label :username %>
+  <%= f.label :username %><br>
   <%= f.text_field :username %><br>
 
-  <%= f.label :password %>
+  <%= f.label :password %><br>
   <%= f.password_field :password %><br>
 
-  <%= f.label :password_confirmation %>
+  <%= f.label :password_confirmation %><br>
   <%= f.password_field :password_confirmation %><br>
 
-  <%= f.label :name %>
+  <%= f.label :name %><br>
   <%= f.text_field :name %><br>
 
-  <%= f.label :birthday %>
+  <%= f.label "Birthday: example December 25, 1999" %><br>
   <%= f.text_field :birthday %><br>
 
-  <%= f.label :preferences %>
+  <%= f.label "Preferences: example bordeaux, full-bodied reds, roses" %><br>
   <%= f.text_field :preferences %><br>
 
-  <%= f.label :email %>
+  <%= f.label :email %><br>
   <%= f.text_field :email %><br>
 
   <%= f.submit 'Submit' %>

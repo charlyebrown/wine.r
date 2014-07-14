@@ -22,6 +22,7 @@ class SnoothFood
 
   #equates user's preferences with a score
   def self.convert_user_preferences(preferences)
+    pscore = 0
     case preferences
       when /sparkling/
         pscore = 5
