@@ -19,4 +19,5 @@
   <% random_wine = Wine.find(random_id) %>
   <%= link_to random_wine.name, wine_path(random_wine) %>
   <img src="<%= random_wine.image %>">
+  <hr>
 </div>
