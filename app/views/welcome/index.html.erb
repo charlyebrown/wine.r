@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="wine_rec">
-<h2>Check out this awesome wine!</h2>
+<h2>Charlye's Choice:</h2>
   <% random_id = Wine.pluck(:id).shuffle[0] %>
   <% random_wine = Wine.find(random_id) %>
   <%= link_to random_wine.name, wine_path(random_wine) %>
