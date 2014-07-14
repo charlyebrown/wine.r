@@ -2,6 +2,19 @@ body {
   border-top: 10px solid black;
 }
 
+.constant_header {
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.image-wrap{
+  align-content: center;
+}
+
+.image-wrap img{
+  width: 100%;
+}
+
 h2 {
   font-size: 30px;
   font-weight: bold;
@@ -9,9 +22,8 @@ h2 {
   margin-bottom: 50px;
 }
 
-.constant_header {
-  margin-top: 15px;
-  margin-right: 15px;
+.login_fields {
+  margin-bottom: 15px;
 }
 
 .wine_show {
