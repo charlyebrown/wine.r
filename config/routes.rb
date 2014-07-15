@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/wines/search_by_food'                => 'wines#search_by_food'
   post '/wines/add_to_user_favorites_wines'  => 'wines#add_to_user_favorites', as: 'add_to_user_favorites_wines'
 
+
   #Users
   post '/users/remove_wine'  => 'users#remove_wine'
   resources :users
