@@ -29,11 +29,4 @@ describe User do
     charlye.wines << wine1
   end
 
-  it "is expected to not allow users to add same wine twice" do
-    wine1 = Wine.create(name: 'Delicious Wine', vintage: 1999, vineyard: "Long Island",
-    image: "http://flickholdr.com/200/300/wine")
-    charlye.wines << wine1
-    expect(charlye.wines << wine1 ).to be(false)
-  end
-
 end

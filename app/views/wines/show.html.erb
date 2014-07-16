@@ -17,27 +17,27 @@
     <% rating = average_rating.inject{ |sum, el| sum + el }.to_f / average_rating.size %>
     <em>Rating: </em><%= rating %>
   <% end %>
-
-<% end %>
-
-<div>
-<% user = current_user %>
-  <% if Wine.joins(:users).where(code: @wine.code) == [] %>
-  <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do |f| %>
-    <%= hidden_field_tag :code, @wine.code %>
-    <%= submit_tag 'Add to Your Favorites' %>
-  <% end %>
-<% end %>
-
-<!-- allow users to create a review if they haven't already written one, if not, bring them to their review  -->
-<% current_review = WineReview.where(wine_id: @wine.id).where(user_id: current_user.id) %>
-<% if current_review %>
-  <% link_to "Edit your review for #{@wine.name}", edit_wine_review_path(current_review) %>
-<%else %>
-  <%= form_tag('/wine_reviews/new', method: :get) do |f| %>
-    <%= hidden_field_tag :wine_id, @wine.id %>
-    <%= submit_tag "Add a review for #{@wine.name}" %>
-  <% end %>
 <% end %>
 </div>
+
+<div class="add_wine">
+  <% if !current_user.wines.include?(@wine) %>
+    <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do |f| %>
+      <%= hidden_field_tag :id, @wine.id %>
+      <%= submit_tag 'Add to Your Favorites' %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="reviews">
+  <!-- allow users to create a review if they haven't already written one, if not, bring them to their review  -->
+  <% current_review = WineReview.where(wine_id: @wine.id).where(user_id: current_user.id) %>
+  <% if current_review %>
+    <% link_to "Edit your review for #{@wine.name}", edit_wine_review_path(current_review) %>
+  <%else %>
+    <%= form_tag('/wine_reviews/new', method: :get) do |f| %>
+      <%= hidden_field_tag :wine_id, @wine.id %>
+      <%= submit_tag "Add a review for #{@wine.name}" %>
+    <% end %>
+  <% end %>
 </div>

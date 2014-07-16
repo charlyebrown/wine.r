@@ -12,18 +12,18 @@ class WinesController < ApplicationController
   end
 
   def search_by_food
-    @preferences = current_user.preferences
     @food = params[:food]
-    @results = SnoothFood.search_by_food(@food, params[:price], @preferences)
+    @results = SnoothFood.search_by_food(@food, params[:price])
     Wine.add_wines(@results)
   end
 
   def add_to_user_favorites
-    current_wine = Wine.find_by(code: params[:code])
-    if current_user.wines.include?(@wine)
-      flash[:notice] = "You've already favorited that wine!"
+    current_wine = Wine.find_by(params[:id])
+    if current_user.wines.include?(current_wine)
+      flash[:notice] = "You already favorited that wine!"
       redirect_to user_path(current_user)
     else
+      flash[:notice] = "You've added #{current_wine.name} to your favorites!"
       current_user.wines << current_wine
       redirect_to user_path(current_user)
     end
