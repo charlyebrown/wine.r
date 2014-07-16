@@ -19,10 +19,10 @@ class WinesController < ApplicationController
   end
 
   def add_to_user_favorites
-    user_favorite_wine = Wine.find_by(code: params[:code])
-    user = current_user
-    user.wines << user_favorite_wine
-    redirect_to user_path(user)
+    current_wine = Wine.find_by(code: params[:code])
+    if current_user.wines.include?(@wine)
+    current_user.wines << current_wine
+    redirect_to user_path(current_user)
   end
 
   def show

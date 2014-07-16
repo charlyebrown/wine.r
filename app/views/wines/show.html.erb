@@ -1,5 +1,4 @@
 <div class="show">
-<div class="wine"
 <h2><%= @wine.name %> | <%= @wine.vintage %></h2><br>
 <img src="<%= @wine.image %>">
 <% if @wine.description %>
@@ -40,4 +39,5 @@
     <%= submit_tag "Add a review for #{@wine.name}" %>
   <% end %>
 <% end %>
+</div>
 </div>

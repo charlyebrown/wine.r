@@ -1,6 +1,6 @@
 module SnoothFood
 
-  def self.search_by_food(food, search_price, user_preferences)
+  def self.search_by_food(food, search_price)
     price = Price.convert(search_price)
     #equates food item with a score
     case food
