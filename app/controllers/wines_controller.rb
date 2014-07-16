@@ -21,8 +21,12 @@ class WinesController < ApplicationController
   def add_to_user_favorites
     current_wine = Wine.find_by(code: params[:code])
     if current_user.wines.include?(@wine)
-    current_user.wines << current_wine
-    redirect_to user_path(current_user)
+      flash[:notice] = "You've already favorited that wine!"
+      redirect_to user_path(current_user)
+    else
+      current_user.wines << current_wine
+      redirect_to user_path(current_user)
+    end
   end
 
   def show
