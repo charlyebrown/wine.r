@@ -18,15 +18,8 @@ class WinesController < ApplicationController
   end
 
   def add_to_user_favorites
-    current_wine = Wine.find_by(params[:id])
-    if current_user.wines.include?(current_wine)
-      flash[:notice] = "You already favorited that wine!"
-      redirect_to user_path(current_user)
-    else
-      flash[:notice] = "You've added #{current_wine.name} to your favorites!"
-      current_user.wines << current_wine
-      redirect_to user_path(current_user)
-    end
+    current_user.wines << Wine.find_by(code: params[:code])
+    redirect_to user_path(current_user)
   end
 
   def show
@@ -53,7 +46,7 @@ class WinesController < ApplicationController
 
   def update
     @wine = Wine.find(params[:id])
-    if @wine.update(movie_params)
+    if @wine.update(wine_params)
       redirect_to wine_path(@wine)
     else
       render :edit

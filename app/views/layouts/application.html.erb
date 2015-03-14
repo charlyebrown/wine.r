@@ -9,9 +9,8 @@
 </head>
 <body>
   <div class="image-wrap">
-  <img src="http://www.leperigord.com/wp-content/uploads/2012/09/main_wine.jpg" height=250 width=500>
-  </div>
-  <% ENV["SNOOTH_API_KEY"] %>
+
+    <% ENV["SNOOTH_API_KEY"] %>
     <% if session[:current_user] %>
       <div class="constant_header" align="right">
         <%= link_to 'win.r', root_path %> |
@@ -20,7 +19,7 @@
       </div>
     <% end %>
 
-<%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>

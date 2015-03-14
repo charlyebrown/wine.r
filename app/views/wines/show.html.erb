@@ -22,8 +22,8 @@
 
 <div class="add_wine">
   <% if !current_user.wines.include?(@wine) %>
-    <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do |f| %>
-      <%= hidden_field_tag :id, @wine.id %>
+    <%= form_tag('/wines/add_to_user_favorites_wines', method: :post) do %>
+      <% hidden_field_tag :code, @wine.code %>
       <%= submit_tag 'Add to Your Favorites' %>
     <% end %>
   <% end %>
